@@ -8,4 +8,7 @@ let serve port =
   let _  = Unix.bind fd (ADDR_INET(Unix.inet_addr_loopback, Common.port)) in
   let _  = Unix.clear_nonblock fd in    (* all IO calls should be blocking *)
   let _  = Unix.set_close_on_exec fd in (* automatically close this file descriptor on exec *)
-    Endpoint.make_endpoint fd
+  let _  = Unix.listen fd 5 in
+  let (cli_fd, cli_addr) = Unix.accept fd in
+  let _  = Unix.set_close_on_exec cli_fd in
+    Endpoint.make_endpoint cli_fd
