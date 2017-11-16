@@ -9,4 +9,3 @@ let serve port =
   let _  = Unix.clear_nonblock fd in    (* all IO calls should be blocking *)
   let _  = Unix.set_close_on_exec fd in (* automatically close this file descriptor on exec *)
     Endpoint.make_endpoint fd
-;;
