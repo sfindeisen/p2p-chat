@@ -1,6 +1,6 @@
 .PHONY: all clean byte native debug
 
-OCB_FLAGS = -pkg unix -I src
+OCB_FLAGS = -tags debug,safe_string -pkg unix -I src
 OCB = ocamlbuild $(OCB_FLAGS)
 PROGRAM=chat
 
