@@ -4,7 +4,7 @@ open Server
 
 let print_line s =
   print_string s;
-  print_newline ()
+  print_newline ()        (* flushes the buffer *)
 ;;
 
 let operate ep =
