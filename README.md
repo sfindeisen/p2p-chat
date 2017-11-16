@@ -9,13 +9,22 @@ make
 
 ## How to run
 
-```
-chat.native
-chat.native localhost
-```
+1. Start the server:
 
-In order to enable exception **stack traces**, set your `OCAMLRUNPARAM` environment variable to `b`: `OCAMLRUNPARAM=b`. That's all
-what is needed, because the programs are compiled with debug information on.
+   ```
+   chat.native
+   ```
+
+2. Start the client:
+
+   ```
+   chat.native localhost
+   ```
+
+   Instead of `localhost` you can use any other host.
+
+In order to enable exception **stack traces**, set your `OCAMLRUNPARAM` environment variable to `b`. That's all
+what is needed, because the application is compiled with debug information on.
 
 ## How to clean
 
