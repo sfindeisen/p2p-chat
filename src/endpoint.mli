@@ -1,15 +1,15 @@
-open Unix;;
+open Unix
+open Message
 
-open Message;;
+type endpoint
 
-type endpoint = EndPoint of (Unix.file_descr);;
+(** Given a file descriptor, creates an endpoint. *)
+val make_endpoint: Unix.file_descr -> endpoint
 
-(** Sends the given message to the other site.
-    Returns the roundtrip time (in milliseconds).
+(** Sends the given message to the other site and waits for the acknowledgement.
+    This is a blocking call. Returns the roundtrip time (in milliseconds).
  *)
-val send_message : Message.msg -> int ;;
+val send_message : endpoint -> Message.msg -> int
 
-(** Receives a message from this endpoint
-    (a blocking call).
- *)
-val recv_message : unit -> Message.msg ;;
+(** Receives a message from this endpoint. This is a blocking call. *)
+val recv_message : endpoint -> Message.msg
