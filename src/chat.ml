@@ -1,14 +1,24 @@
+open Thread
+
 open Common
 open Client
+open Endpoint
+open Message
 open Server
 
-let print_line s =
-  print_string s;
-  print_newline ()        (* flushes the buffer *)
+let rec receiver ep =
+  let msg_raw = Endpoint.recv_message ep in begin
+    match Message.decode msg_raw with
+    | Utils.Left(error_msg)   -> print_line("Error decoding message: " ^ error_msg)
+    | Utils.Right(Decoded(m)) -> print_line("Got msg: " ^ m)
+    | _ -> print_line("Unknown error decoding message!");
+    receiver ep
+  end
 ;;
 
 let operate ep =
-  print_line "success!"
+  let receiver_thread = Thread.create receiver ep in
+    print_line "Receiver thread successfully created!"
 
 let main () =
   let endPoint = 

@@ -10,7 +10,8 @@ let resolve host port =
 
 let connect host port =
   let addrinfo = resolve host port in
-  let fd = Unix.socket Unix.PF_INET Unix.SOCK_STREAM 0 in
+  let fd = Unix.socket addrinfo.ai_family addrinfo.ai_socktype 0 in
+  let _  = print_line "Created client socket" in
   let _  = Unix.connect fd addrinfo.ai_addr in
   let _  = Unix.clear_nonblock fd in    (* all IO calls should be blocking *)
   let _  = Unix.set_close_on_exec fd in (* automatically close this file descriptor on exec *)
