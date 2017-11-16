@@ -1,10 +1,9 @@
-open Common;;
-open Client;;
-open Server;;
+open Common
+open Client
+open Server
 
 let operate ep =
   print_string "success!"
-;;
 
 let main () =
   let endPoint = 
@@ -15,6 +14,7 @@ let main () =
     else
         Server.serve Common.port
   in
-    operate endPoint;;
+    operate endPoint
+;;
 
-main () ;;
+main ()

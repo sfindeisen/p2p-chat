@@ -1,3 +1,3 @@
-exception ChatException of string;;
+exception ChatException of string
 
-let port = 9954;;
+let port = 9954

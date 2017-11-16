@@ -1,6 +1,6 @@
-open Unix;;
+open Unix
 
-open Endpoint;;
+open Endpoint
 
 (** Creates a new client socket and connects it to the given host and TCP port number. *)
-val connect : string -> int -> Endpoint.endpoint ;;
+val connect : string -> int -> Endpoint.endpoint
